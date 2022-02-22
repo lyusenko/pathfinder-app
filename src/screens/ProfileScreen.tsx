@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, TextInput, View, Text } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 export const ProfileScreen = () => {
@@ -25,7 +25,6 @@ export const ProfileScreen = () => {
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
-        <Text style={styles.header}>{values.characterName}</Text>
         <TextInput
           style={styles.input}
           value={values.characterName}

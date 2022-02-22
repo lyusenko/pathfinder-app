@@ -21,7 +21,7 @@ export const AttributesScreen = () => {
       <TextInput
         style={styles.input}
         value={values.strength}
-        onChangeText={handleChange("strenght")}
+        onChangeText={handleChange("strength")}
         placeholder="Сила"
       />
       <TextInput
