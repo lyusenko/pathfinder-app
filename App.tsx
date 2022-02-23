@@ -11,6 +11,17 @@ import { ProfileScreen } from "./src/screens/ProfileScreen";
 import { SkillsScreen } from "./src/screens/SkillsScreen";
 import { SpellsScreen } from "./src/screens/SpellsScreen";
 
+const enum Screen {
+  Abilities = "Abilities",
+  Attributes = "Attributes",
+  Equipment = "Equipment",
+  Main = "Main",
+  Notes = "Notes",
+  Profile = "Profile",
+  Skills = "Skills",
+  Spells = "Spells",
+}
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -18,42 +29,42 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Main">
         <Drawer.Screen
-          name="Main"
+          name={Screen.Main}
           component={MainScreen}
           options={{ title: "Статус" }}
         />
         <Drawer.Screen
-          name="Profile"
+          name={Screen.Profile}
           component={ProfileScreen}
           options={{ title: "Профиль" }}
         />
         <Drawer.Screen
-          name="Attributes"
+          name={Screen.Attributes}
           component={AttributesScreen}
           options={{ title: "Характеристики" }}
         />
         <Drawer.Screen
-          name="Skills"
+          name={Screen.Skills}
           component={SkillsScreen}
           options={{ title: "Навыки" }}
         />
         <Drawer.Screen
-          name="Abilities"
+          name={Screen.Abilities}
           component={AbilitiesScreen}
           options={{ title: "Черты и способности" }}
         />
         <Drawer.Screen
-          name="Equipment"
+          name={Screen.Equipment}
           component={EquipmentScreen}
           options={{ title: "Снаряжение" }}
         />
         <Drawer.Screen
-          name="Notes"
+          name={Screen.Notes}
           component={NotesScreen}
           options={{ title: "Заметки" }}
         />
         <Drawer.Screen
-          name="Spells"
+          name={Screen.Spells}
           component={SpellsScreen}
           options={{ title: "Заклинания" }}
         />
