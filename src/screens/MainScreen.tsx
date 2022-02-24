@@ -1,6 +1,6 @@
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-
+import { Input } from "../components/Input";
 import { useStatus } from "../hooks";
 import { StatusKey } from "../types";
 
@@ -13,44 +13,44 @@ export const MainScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <TextInput
-        style={styles.input}
+      <Input
+        label="Внимание"
         defaultValue={values.attentiveness}
         onEndEditing={handleEndEditing(StatusKey.Attentiveness)}
         placeholder="Внимание"
       />
-      <TextInput
-        style={styles.input}
+      <Input
+        label="Здоровье"
         defaultValue={values.healthPoints}
         onEndEditing={handleEndEditing(StatusKey.HealthPoints)}
         placeholder="Здоровье"
       />
-      <TextInput
-        style={styles.input}
+      <Input
+        label="Испытания"
         defaultValue={values.battle}
         onEndEditing={handleEndEditing(StatusKey.Battle)}
         placeholder="Испытания"
       />
-      <TextInput
-        style={styles.input}
+      <Input
+        label="Класс брони"
         defaultValue={values.armorClass}
         onEndEditing={handleEndEditing(StatusKey.ArmorClass)}
         placeholder="Класс брони"
       />
-      <TextInput
-        style={styles.input}
+      <Input
+        label="Скорость"
         defaultValue={values.speed}
         onEndEditing={handleEndEditing(StatusKey.Speed)}
         placeholder="Скорость"
       />
-      <TextInput
-        style={styles.input}
+      <Input
+        label="Удары в ближнем бою"
         defaultValue={values.meleeStrikes}
         onEndEditing={handleEndEditing(StatusKey.MeleeStrikes)}
         placeholder="Удары в ближнем бою"
       />
-      <TextInput
-        style={styles.input}
+      <Input
+        label="Дистанционные удары"
         defaultValue={values.rangedStrikes}
         onEndEditing={handleEndEditing(StatusKey.RangedStrikes)}
         placeholder="Дистанционные удары"
@@ -65,13 +65,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  input: {
-    marginBottom: 24,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    backgroundColor: "#ffffff",
-    borderRadius: 4,
-    width: "100%",
-    elevation: 1,
+  label: {
+    marginBottom: 4,
+    paddingLeft: 18,
+    alignSelf: "flex-start",
+    fontWeight: "bold",
+    fontSize: 12,
   },
 });

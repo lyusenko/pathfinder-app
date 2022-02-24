@@ -1,103 +1,90 @@
-import { useState } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { Input } from "../components/Input";
+import { useProfile } from "../hooks";
+import { ProfileKey } from "../types";
 
 export const ProfileScreen = () => {
-  const [values, setValues] = useState({
-    characterName: "",
-    level: "",
-    heroismPoints: "",
-    experience: "",
-    ancestry: "",
-    class: "",
-    size: "",
-    ideology: "",
-    descriptors: "",
-    deity: "",
-    weaponSkills: "",
-    languages: "",
-  });
+  const [values, setValues] = useProfile();
 
-  const handleChange = (key: string) => (value: string) => {
-    setValues({ ...values, [key]: value });
+  const handleEndEditing = (key: string) => async (e: any) => {
+    setValues({ ...values, [key]: e.nativeEvent.text });
   };
 
   return (
-    <ScrollView style={styles.scrollView}>
-      <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          value={values.characterName}
-          onChangeText={handleChange("characterName")}
-          placeholder="Имя персонажа"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.level}
-          onChangeText={handleChange("level")}
-          placeholder="Уровень персонажа"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.heroismPoints}
-          onChangeText={handleChange("heroismPoints")}
-          placeholder="Пункты героизма"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.experience}
-          onChangeText={handleChange("experience")}
-          placeholder="Опыт"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.ancestry}
-          onChangeText={handleChange("ancestry")}
-          placeholder="Народ и родословная"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.class}
-          onChangeText={handleChange("class")}
-          placeholder="Класс"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.size}
-          onChangeText={handleChange("size")}
-          placeholder="Размер"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.ideology}
-          onChangeText={handleChange("ideology")}
-          placeholder="Мировоззрение"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.descriptors}
-          onChangeText={handleChange("descriptors")}
-          placeholder="Дескрипторы"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.deity}
-          onChangeText={handleChange("deity")}
-          placeholder="Божество"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.weaponSkills}
-          onChangeText={handleChange("weaponSkills")}
-          placeholder="Умения в оружии"
-        />
-        <TextInput
-          style={styles.input}
-          value={values.languages}
-          onChangeText={handleChange("languages")}
-          placeholder="Языки"
-        />
-      </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Input
+        label="Имя персонажа"
+        defaultValue={values.characterName}
+        onChangeText={handleEndEditing(ProfileKey.CharacterName)}
+        placeholder="Имя персонажа"
+      />
+      <Input
+        label="Уровень"
+        defaultValue={values.level}
+        onChangeText={handleEndEditing(ProfileKey.Level)}
+        placeholder="Уровень"
+      />
+      <Input
+        label="Пункты героизма"
+        defaultValue={values.heroismPoints}
+        onChangeText={handleEndEditing(ProfileKey.HeroismPoints)}
+        placeholder="Пункты героизма"
+      />
+      <Input
+        label="Опыт"
+        defaultValue={values.experience}
+        onChangeText={handleEndEditing(ProfileKey.Experience)}
+        placeholder="Опыт"
+      />
+      <Input
+        label="Народ и родословная"
+        defaultValue={values.ancestry}
+        onChangeText={handleEndEditing(ProfileKey.Ancestry)}
+        placeholder="Народ и родословная"
+      />
+      <Input
+        label="Класс"
+        defaultValue={values.class}
+        onChangeText={handleEndEditing(ProfileKey.Class)}
+        placeholder="Класс"
+      />
+      <Input
+        label="Размер"
+        defaultValue={values.size}
+        onChangeText={handleEndEditing(ProfileKey.Size)}
+        placeholder="Размер"
+      />
+      <Input
+        label="Мировоззрение"
+        defaultValue={values.ideology}
+        onChangeText={handleEndEditing(ProfileKey.Ideology)}
+        placeholder="Мировоззрение"
+      />
+      <Input
+        label="Дескрипторы"
+        defaultValue={values.descriptors}
+        onChangeText={handleEndEditing(ProfileKey.Descriptors)}
+        placeholder="Дескрипторы"
+      />
+      <Input
+        label="Божество"
+        defaultValue={values.deity}
+        onChangeText={handleEndEditing(ProfileKey.Deity)}
+        placeholder="Божество"
+      />
+      <Input
+        label="Умения в оружии"
+        defaultValue={values.weaponSkills}
+        onChangeText={handleEndEditing(ProfileKey.WeaponSkills)}
+        placeholder="Умения в оружии"
+      />
+      <Input
+        label="Языки"
+        defaultValue={values.languages}
+        onChangeText={handleEndEditing(ProfileKey.Languages)}
+        placeholder="Языки"
+      />
     </ScrollView>
   );
 };
@@ -113,15 +100,8 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   container: {
-    flex: 1,
+    padding: 24,
     justifyContent: "center",
     alignItems: "center",
-  },
-  input: {
-    marginBottom: 24,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    backgroundColor: "#ffffff",
-    width: "90%",
   },
 });
