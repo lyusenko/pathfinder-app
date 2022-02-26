@@ -2,9 +2,9 @@ import { Text, TextInput, StyleSheet, View } from "react-native";
 
 export const Input = (props: any) => {
   return (
-    <View style={styles.wrapper}>
+    <View style={[styles.wrapper, props.style]}>
       <Text style={styles.label}>{props.label}</Text>
-      <TextInput {...props} style={styles.input} />
+      <TextInput {...props} style={[styles.input, props.style]} />
     </View>
   );
 };

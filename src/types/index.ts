@@ -47,3 +47,33 @@ export type Profile = {
   [ProfileKey.WeaponSkills]: string;
   [ProfileKey.Languages]: string;
 };
+
+export const enum AttributesKey {
+  Strength = "strength",
+  Agility = "agility",
+  Constitution = "constitution",
+  Intelligence = "intelligence",
+  Wisdom = "wisdom",
+  Charisma = "charisma",
+  StrengthValue = "strengthValue",
+  AgilityValue = "agilityValue",
+  ConstitutionValue = "constitutionValue",
+  IntelligenceValue = "intelligenceValue",
+  WisdomValue = "wisdomValue",
+  CharismaValue = "charismaValue",
+}
+
+export type Attributes = {
+  [AttributesKey.Strength]: string;
+  [AttributesKey.Agility]: string;
+  [AttributesKey.Constitution]: string;
+  [AttributesKey.Intelligence]: string;
+  [AttributesKey.Wisdom]: string;
+  [AttributesKey.Charisma]: string;
+  [AttributesKey.StrengthValue]: string;
+  [AttributesKey.AgilityValue]: string;
+  [AttributesKey.ConstitutionValue]: string;
+  [AttributesKey.IntelligenceValue]: string;
+  [AttributesKey.WisdomValue]: string;
+  [AttributesKey.CharismaValue]: string;
+};

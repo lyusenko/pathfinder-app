@@ -1,142 +1,124 @@
-import { useState } from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { Input } from "../components/Input";
+import { useAttributes } from "../hooks";
 
 export const AttributesScreen = () => {
-  const [values, setValues] = useState({
-    strength: "",
-    agility: "",
-    constitution: "",
-    intelligence: "",
-    wisdom: "",
-    charisma: "",
-  });
+  const [values, setValues] = useAttributes();
 
-  const handleChange = (key: string) => (value: string) => {
-    setValues({ ...values, [key]: value });
+  const handleEndEditing = (key: string) => async (e: any) => {
+    setValues({ ...values, [key]: e.nativeEvent.text });
   };
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.label}>Сила (мод.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.strength}
-          onChangeText={handleChange("strength")}
-          placeholder="Сила"
-        />
-        <Text style={styles.label}>Ловкость (мод.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.agility}
-          onChangeText={handleChange("agility")}
-          placeholder="Ловкость"
-        />
-        <Text style={styles.label}>Выносливость (мод.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.constitution}
-          onChangeText={handleChange("constitution")}
-          placeholder="Выносливость"
-        />
-        <Text style={styles.label}>Интеллект (мод.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.intelligence}
-          onChangeText={handleChange("intelligence")}
-          placeholder="Интеллект"
-        />
-        <Text style={styles.label}>Мудрость (мод.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.wisdom}
-          onChangeText={handleChange("wisdom")}
-          placeholder="Мудрость"
-        />
-        <Text style={styles.label}>Харизма (мод.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.charisma}
-          onChangeText={handleChange("charisma")}
-          placeholder="Харизма"
-        />
-        <Text style={styles.label}>Сила (знач.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.strength}
-          onChangeText={handleChange("strength")}
-          placeholder="Сила"
-        />
-        <Text style={styles.label}>Ловкость (знач.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.agility}
-          onChangeText={handleChange("agility")}
-          placeholder="Ловкость"
-        />
-        <Text style={styles.label}>Выносливость (знач.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.constitution}
-          onChangeText={handleChange("constitution")}
-          placeholder="Выносливость"
-        />
-        <Text style={styles.label}>Интеллект (знач.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.intelligence}
-          onChangeText={handleChange("intelligence")}
-          placeholder="Интеллект"
-        />
-        <Text style={styles.label}>Мудрость (знач.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.wisdom}
-          onChangeText={handleChange("wisdom")}
-          placeholder="Мудрость"
-        />
-        <Text style={styles.label}>Харизма (знач.)</Text>
-        <TextInput
-          style={styles.input}
-          value={values.charisma}
-          onChangeText={handleChange("charisma")}
-          placeholder="Харизма"
-        />
-      </View>
+    <ScrollView contentContainerStyle={styles.wrapper}>
+      {/* <View style={styles.wrapper}> */}
+      <Input
+        style={styles.input}
+        label="Сила (мод.)"
+        defaultValue={values.strength}
+        onEndEditing={handleEndEditing("strenght")}
+        placeholder="Сила (мод.)"
+      />
+      <Input
+        style={styles.input}
+        label="Сила (знач.)"
+        defaultValue={values.strengthValue}
+        onEndEditing={handleEndEditing("strengthValue")}
+        placeholder="Сила"
+      />
+      <Input
+        style={styles.input}
+        label="Ловкость (мод.)"
+        defaultValue={values.agility}
+        onEndEditing={handleEndEditing("agility")}
+        placeholder="Ловкость (мод.)"
+      />
+      <Input
+        style={styles.input}
+        label="Ловкость (знач.)"
+        defaultValue={values.agilityValue}
+        onEndEditing={handleEndEditing("agilityValue")}
+        placeholder="Ловкость"
+      />
+      <Input
+        style={styles.input}
+        label="Выносливость (мод.)"
+        defaultValue={values.constitution}
+        onEndEditing={handleEndEditing("constitution")}
+        placeholder="Выносливость"
+      />
+      <Input
+        style={styles.input}
+        label="Выносливость (знач.)"
+        defaultValue={values.constitution}
+        Value
+        onEndEditing={handleEndEditing("constitutionValue")}
+        placeholder="Выносливость"
+      />
+      <Input
+        style={styles.input}
+        label="Интеллект (мод.)"
+        defaultValue={values.intelligence}
+        onEndEditing={handleEndEditing("intelligence")}
+        placeholder="Интеллект"
+      />
+      <Input
+        style={styles.input}
+        label="Интеллект (знач.)"
+        defaultValue={values.intelligenceValue}
+        onEndEditing={handleEndEditing("intelligenceValue")}
+        placeholder="Интеллект"
+      />
+      <Input
+        style={styles.input}
+        label="Мудрость (мод.)"
+        defaultValue={values.wisdom}
+        onEndEditing={handleEndEditing("wisdom")}
+        placeholder="Мудрость"
+      />
+      <Input
+        style={styles.input}
+        label="Мудрость (знач.)"
+        defaultValue={values.wisdomValue}
+        onEndEditing={handleEndEditing("wisdomValue")}
+        placeholder="Мудрость"
+      />
+      <Input
+        style={styles.input}
+        label="Харизма (мод.)"
+        defaultValue={values.charisma}
+        onEndEditing={handleEndEditing("charisma")}
+        placeholder="Харизма"
+      />
+      <Input
+        style={styles.input}
+        label="Харизма (знач.)"
+        defaultValue={values.charismaValue}
+        onEndEditing={handleEndEditing("charismaValue")}
+        placeholder="Харизма"
+      />
+      {/* </View> */}
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    fontSize: 24,
-    marginTop: 12,
-    marginBottom: 24,
-  },
-  container: {
+  // container: {
+  //   flex: 1,
+  // flexDirection: "",
+  // },
+  wrapper: {
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
+    flexDirection: "row",
+    // justifyContent: "space-around",
+    // alignItems: "flex-start",
     flexWrap: "wrap",
-    margin: 12,
-    maxHeight: 590,
+    marginVertical: 12,
+    width: "100%",
   },
   input: {
-    marginBottom: 24,
-    marginHorizontal: 18,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    backgroundColor: "#ffffff",
-    borderRadius: 8,
-    elevation: 1,
-    width: "40%",
-  },
-  label: {
-    marginBottom: 4,
-    paddingLeft: 18,
-    alignSelf: "flex-start",
-    fontWeight: "bold",
-    fontSize: 12,
+    width: "50%",
+    // marginHorizontal: 12,
   },
 });
