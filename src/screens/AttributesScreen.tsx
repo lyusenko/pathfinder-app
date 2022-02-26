@@ -17,7 +17,7 @@ export const AttributesScreen = () => {
         style={styles.input}
         label="Сила (мод.)"
         defaultValue={values.strength}
-        onEndEditing={handleEndEditing("strenght")}
+        onEndEditing={handleEndEditing("strength")}
         placeholder="Сила (мод.)"
       />
       <Input
@@ -51,7 +51,7 @@ export const AttributesScreen = () => {
       <Input
         style={styles.input}
         label="Выносливость (знач.)"
-        defaultValue={values.constitution}
+        defaultValue={values.constitutionValue}
         Value
         onEndEditing={handleEndEditing("constitutionValue")}
         placeholder="Выносливость"
@@ -104,21 +104,14 @@ export const AttributesScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  // flexDirection: "",
-  // },
   wrapper: {
     flex: 1,
     flexDirection: "row",
-    // justifyContent: "space-around",
-    // alignItems: "flex-start",
     flexWrap: "wrap",
     marginVertical: 12,
     width: "100%",
   },
   input: {
     width: "50%",
-    // marginHorizontal: 12,
   },
 });
